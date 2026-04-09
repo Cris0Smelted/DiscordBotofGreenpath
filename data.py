@@ -4,13 +4,14 @@ Provide a dictionary named `CHALLENGES` containing ecological and
 environmental challenge items. Each item is a dict with keys:
 - title: short title
 - question: the prompt/question text
-- options: optional list of choices (for multiple-choice)
-- answer: canonical answer (string or list)
+- options: list of choices (for multiple-choice)
+- answer: canonical answer string
+- points: integer points awarded for a correct answer
 - tags: list of topical tags
 - difficulty: one of 'easy', 'medium', 'hard'
 
 This file is intentionally simple so the bot can import `CHALLENGES`
- and use it to pick or display challenges.
+and use it to pick or display challenges.
 """
 
 CHALLENGES = {
@@ -21,6 +22,7 @@ CHALLENGES = {
 		"answer": "PET (1)",
 		"tags": ["waste", "recycling", "materials"],
 		"difficulty": "easy",
+		"points": 1,
 	},
 
 	"water_1": {
@@ -30,6 +32,7 @@ CHALLENGES = {
 		"answer": "Fixing leaky taps",
 		"tags": ["water", "conservation"],
 		"difficulty": "easy",
+		"points": 1,
 	},
 
 	"energy_1": {
@@ -39,14 +42,17 @@ CHALLENGES = {
 		"answer": "Solar photovoltaics",
 		"tags": ["energy", "climate"],
 		"difficulty": "easy",
+		"points": 1,
 	},
 
 	"biodiv_1": {
 		"title": "Pollinators",
 		"question": "Name one key reason why pollinators (like bees) are important for ecosystems and human food production.",
-		"answer": ["They pollinate crops", "Support wild plant reproduction", "Maintain biodiversity"],
+		"options": ["They pollinate crops", "They increase greenhouse gases", "They reduce soil fertility", "They create more waste"],
+		"answer": "They pollinate crops",
 		"tags": ["biodiversity", "ecosystems", "pollinators"],
 		"difficulty": "easy",
+		"points": 1,
 	},
 
 	"waste_1": {
@@ -56,6 +62,7 @@ CHALLENGES = {
 		"answer": "Meat and dairy",
 		"tags": ["waste", "composting"],
 		"difficulty": "medium",
+		"points": 1,
 	},
 
 	"climate_1": {
@@ -65,6 +72,7 @@ CHALLENGES = {
 		"answer": "Carbon dioxide (CO2)",
 		"tags": ["climate", "ghg"],
 		"difficulty": "easy",
+		"points": 1,
 	},
 
 	"transport_1": {
@@ -74,14 +82,17 @@ CHALLENGES = {
 		"answer": "Switch from car to public transit",
 		"tags": ["transport", "emissions"],
 		"difficulty": "medium",
+		"points": 1,
 	},
 
 	"forest_1": {
 		"title": "Deforestation Impact",
 		"question": "List one major ecological consequence of large-scale deforestation.",
-		"answer": ["Loss of habitat", "Reduced carbon storage", "Soil erosion", "Reduced rainfall locally"],
+		"options": ["Loss of habitat", "Improved air quality", "Stronger storms", "Reduced carbon emissions"],
+		"answer": "Loss of habitat",
 		"tags": ["forests", "biodiversity", "climate"],
 		"difficulty": "medium",
+		"points": 1,
 	},
 
 	"pollution_1": {
@@ -91,6 +102,7 @@ CHALLENGES = {
 		"answer": "Nitrogen oxides (NOx)",
 		"tags": ["air", "pollution"],
 		"difficulty": "medium",
+		"points": 1,
 	},
 
 	"plastic_1": {
@@ -100,30 +112,37 @@ CHALLENGES = {
 		"answer": "Plastic bags",
 		"tags": ["plastic", "marine"],
 		"difficulty": "easy",
+		"points": 1,
 	},
 
 	"soil_1": {
 		"title": "Soil Health",
 		"question": "Why is maintaining healthy soil important for agriculture and climate?",
-		"answer": ["Stores carbon", "Supports plant growth", "Retains water and nutrients"],
+		"options": ["Stores carbon", "Kills plants", "Increases flooding", "Creates heat islands"],
+		"answer": "Stores carbon",
 		"tags": ["soil", "agriculture"],
 		"difficulty": "medium",
+		"points": 1,
 	},
 
 	"urban_1": {
 		"title": "Urban Green Spaces",
 		"question": "Name one benefit of urban green spaces for human communities.",
-		"answer": ["Heat reduction", "Improved air quality", "Mental health benefits", "Habitat for wildlife"],
+		"options": ["Heat reduction", "Improved air quality", "More traffic", "Less green cover"],
+		"answer": "Heat reduction",
 		"tags": ["urban", "ecosystem services"],
 		"difficulty": "easy",
+		"points": 1,
 	},
 
 	"invasive_1": {
 		"title": "Invasive Species",
 		"question": "What is a common ecological problem caused by invasive species?",
-		"answer": ["Outcompeting native species", "Altering food webs", "Reducing biodiversity"],
+		"options": ["Outcompeting native species", "Boosting local crops", "Increasing native biodiversity", "Stabilizing habitats"],
+		"answer": "Outcompeting native species",
 		"tags": ["invasive", "biodiversity"],
 		"difficulty": "medium",
+		"points": 1,
 	},
 
 	"consumption_1": {
@@ -133,6 +152,7 @@ CHALLENGES = {
 		"answer": "Buying less new stuff",
 		"tags": ["consumption", "circular economy"],
 		"difficulty": "easy",
+		"points": 1,
 	},
 
 	"food_1": {
@@ -142,6 +162,7 @@ CHALLENGES = {
 		"answer": "Meal planning",
 		"tags": ["food", "waste"],
 		"difficulty": "easy",
+		"points": 1,
 	},
 
 	"energy_2": {
@@ -151,32 +172,39 @@ CHALLENGES = {
 		"answer": "Switching to LED lighting",
 		"tags": ["energy", "efficiency"],
 		"difficulty": "easy",
+		"points": 1,
 	},
 
 	"wetland_1": {
 		"title": "Wetland Benefits",
 		"question": "List one ecosystem service provided by wetlands.",
-		"answer": ["Flood mitigation", "Water filtration", "Biodiversity habitat"],
+		"options": ["Flood mitigation", "Water filtration", "Biodiversity habitat", "Urban development"],
+		"answer": "Flood mitigation",
 		"tags": ["wetlands", "ecosystem services"],
 		"difficulty": "medium",
+		"points": 1,
 	},
 
 	"species_1": {
 		"title": "Endangered Species",
 		"question": "Name one primary driver of species becoming endangered.",
-		"answer": ["Habitat loss", "Overexploitation", "Pollution", "Climate change"],
+		"options": ["Habitat loss", "Overexploitation", "Pollution", "Climate change"],
+		"answer": "Habitat loss",
 		"tags": ["conservation", "species"],
 		"difficulty": "medium",
+		"points": 1,
 	},
 
 	"citizen_1": {
 		"title": "Citizen Science",
 		"question": "How can ordinary citizens contribute to environmental science?",
-		"answer": ["Reporting wildlife sightings", "Participating in local surveys", "Monitoring air or water quality"],
+		"options": ["Reporting wildlife sightings", "Participating in local surveys", "Monitoring air or water quality", "Ignoring environmental issues"],
+		"answer": "Reporting wildlife sightings",
 		"tags": ["citizen science", "engagement"],
 		"difficulty": "easy",
+		"points": 1,
 	},
 }
-print(len(CHALLENGES.keys()))
+
 __all__ = ["CHALLENGES"]
 

@@ -72,7 +72,7 @@ async def hi(ctx):
 
 
 @bot.command()
-async def challenge(ctx):
+async def challenge(ctx): 
     userid = str(ctx.author.id)
     name = ctx.author.name
     user_create(userid, name)
@@ -80,6 +80,54 @@ async def challenge(ctx):
     if act_chall is None:
         await ctx.send("Congratulations! You have completed all the challenges in your way!!")
         return 
-    await ctx.send(f"Challenge: {act_chall["title"]}\n Question: {act_chall["question"]}\n Options: {act_chall["options"]}")
+    options = act_chall["options"]
+    options_text = (
+    "A) " + options[0] + "\n"
+    "B) " + options[1] + "\n"
+    "C) " + options[2] + "\n"
+    "D) " + options[3]
+    )
+
+    await ctx.send(f"Challenge: {act_chall["title"]}\n Question: {act_chall["question"]}\n Options =\n {options_text} \n Choose and type between the options (A), (B), (C) and (D)")
+    def check(m):
+        return m.author == ctx.author and m.channel == ctx.channel
+    try:
+        msg = await bot.wait_for("message", timeout= 30.0, check=check)
+        answer = msg.content.upper()
+        if answer not in ["A", "B", "C", "D"]:
+            await ctx.send("That is not a answer, please use A, B, C or D to answer")
+            return
+        
+        selected_option = ""
+        if answer == "A":
+            selected_option = options[0]
+        elif answer == "B":
+            selected_option = options[1]
+        elif answer == "C":
+            selected_option = options[2]
+        elif answer == "D":
+            selected_option = options[3]
+
+        if selected_option == act_chall["answer"]:
+            users[userid]["points"] += act_chall["points"]
+            uptlevel(userid)
+            newlv = users[userid]["level"] 
+            challengeup(userid)
+
+            message = (
+                f"✅ Correct, {ctx.author.mention}!\n"
+                f"You earned **{act_chall['points']} points**.\n"
+                f"💰 Total points: **{users[userid]['points']}**\n"
+                f"🏆 Current level: **{users[userid]['level']}**"
+            )
+            await ctx.send(message)
+#            oldlv = users[userid["level"]]
+#            if newlv > oldlv:
+#                message += f"\n You have leveled up"
+         
+        else:
+            await ctx.send("Incorrect! Try again.")
+    except:
+        await ctx.send("Times over! You must complete the question within 30 seconds. Try again.")
 
 bot.run("")
