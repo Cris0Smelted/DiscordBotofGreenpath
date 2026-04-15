@@ -58,7 +58,7 @@ async def on_ready():
 @bot.command()
 async def profile(ctx):
     user_id = str(ctx.author.id)
-    names = ctx.author.name
+    names = ctx.author.mention
     user_create(user_id, names)
     user = users[user_id]
     await ctx.send(f" Profile of {user["name"]}\n Points : {user["points"]}\n Levels : {user["level"]}")
